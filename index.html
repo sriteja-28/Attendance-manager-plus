@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance Manager Plus</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    h2 {
+        text-align: center;
+    }
+    label {
+        font-weight: bold;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Attendance Management</h2>
+    <form id="attendanceForm">
+        <div>
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" name="studentName" required>
+        </div>
+        <div>
+            <label for="attendanceStatus">Attendance Status:</label>
+            <select id="attendanceStatus" name="attendanceStatus" required>
+                <option value="present">Present</option>
+                <option value="absent">Absent</option>
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("attendanceForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var form = event.target;
+        var formData = new FormData(form);
+        var studentName = formData.get("studentName");
+        var attendanceStatus = formData.get("attendanceStatus");
+        markAttendance(studentName, attendanceStatus);
+    });
+
+    function markAttendance(studentName, attendanceStatus) {
+        // Dummy implementation for demonstration
+        console.log("Attendance marked for " + studentName + ": " + attendanceStatus);
+        if (attendanceStatus === "absent") {
+            sendSMS(studentName);
+        }
+    }
+
+    function sendSMS(studentName) {
+        // Dummy implementation for demonstration
+        console.log("SMS alert sent to " + studentName);
+    }
+</script>
+
+</body>
+</html>
